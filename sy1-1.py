@@ -10,7 +10,7 @@
     else:
         return "无效三角形"
 
-a,b,c=eval(input("请输入三角形三边长度(格式为：a,b,c)："))
+# a,b,c=eval(input("请输入三角形三边长度(格式为：a,b,c)："))
 # a,b,c=3,4,5
 # a,b,c=5,5,5
 # a,b,c=4,4,6
