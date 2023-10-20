@@ -44,7 +44,7 @@ def NextDate(Y, M, D):
 
 # input = input("请输入日期（格式：yyyy-mm-dd）：")
 # input = "2022-12-31"
-input = "2023-2-28"
+# input = "2023-2-28"
 # input = "0-5-10"
 # input = "2023-0-4"
 # input = "2023-8-0"
