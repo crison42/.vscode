@@ -43,7 +43,7 @@ def NextDate(Y, M, D):
             return str(Y) + "-" + str(M) + "-" + str(D+1)
 
 # input = input("请输入日期（格式：yyyy-mm-dd）：")
-# input = "2022-12-31"
+input = "2022-12-31"
 # input = "2023-2-28"
 # input = "0-5-10"
 # input = "2023-0-4"
