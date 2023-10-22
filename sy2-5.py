@@ -1,0 +1,8 @@
+grade=(68 ,87 ,83 ,91 ,93 ,79 ,68 ,86 ,66 ,78)
+print(grade)
+print(grade[1])
+print(grade[2:7])
+print(87 in grade)
+print(grade.index(78)+1)
+print(grade.count(68))
+print(grade.__len__())
