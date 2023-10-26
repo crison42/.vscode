@@ -9,7 +9,7 @@ def password_test(password,list,letter):
         return True
     else:
         return False
-# 该函数可不使用，但需要mian函数内注释行
+# 该函数可不使用，但需要main函数内注释行
 
 def main():
     userName = ("zhangsan","lisi","wangwu","zhaoliu","xiaolin","xiaohua")
