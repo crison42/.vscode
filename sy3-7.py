@@ -16,6 +16,6 @@ def random_number(times):
             sum+=" "
         print(sum)
 
-print("软工**班**的大乐透号码生成器")
+print("软工2213班常洪的大乐透号码生成器")
 times=int(input("请输入要生成的大乐透号码注数:"))
 random_number(times)
