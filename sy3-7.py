@@ -10,11 +10,12 @@ def random_number(times):
         list2.sort()
         list=list1+list2
         sum=""
-        times-=1
         for i in range(list.__len__()):
             sum+=str(list[i])
             sum+=" "
         print(sum)
+        times-=1
+
 
 print("软工2213班常洪的大乐透号码生成器")
 times=int(input("请输入要生成的大乐透号码注数:"))
