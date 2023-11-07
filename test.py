@@ -7,6 +7,7 @@ class Activity:
         self.start = start
         self.end = end
 
+    # 自定义输出形式
     def __str__(self):
         return f"({self.start}, {self.end})"
 
