@@ -61,7 +61,6 @@ def pull():
         print("输入的三边长不能构成三角形")
         return pull()
 
-a1 = a2 = a3 = 0
 
 a1, a2, a3 = pull()
 
