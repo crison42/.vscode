@@ -9,6 +9,22 @@ total_in_price = 0
 menu = ["1.查询商品", "2.新增商品", "3.卖出商品", "4.汇总", "-1.退出系统"]
 
 
+def is_number(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        pass
+    try:
+        import unicodedata
+
+        unicodedata.numeric(num)
+        return True
+    except (TypeError, ValueError):
+        pass
+    return False
+
+
 # 查询商品
 def query_product():
     if not inventory:
@@ -29,7 +45,7 @@ def add_product():
     stock = input("请输入进货数量:")
     if int(in_price) <= 0 or int(sale_price) <= 0 or int(stock) < 0:
         print("价格必须大于0,数量必须为非负数")
-    elif in_price.isdigit() and sale_price.isdigit() and stock.isdigit():
+    elif is_number(in_price) and is_number(sale_price) and is_number(stock):
         inventory[product] = {
             "in_price": int(in_price),
             "sale_price": int(sale_price),
@@ -50,13 +66,13 @@ def sell_product():
     else:
         stock = inventory[product]["stock"]
         sale_num = input("请输入销售数量:")
-        if sale_num.isdigit():  # 数字判定
+        if is_number(sale_num):  # 数字判定
             sale_num = int(sale_num)
             if stock >= sale_num:
                 price = int(inventory[product]["sale_price"] * sale_num)
                 print(f"应付款={price}")
                 pay = input("请输入付款金额:")
-                if pay.isdigit():  # 数字判定
+                if is_number(pay):  # 数字判定
                     pay = int(pay)
                     if pay >= price:
                         inventory[product]["stock"] -= sale_num
@@ -95,7 +111,7 @@ while True:
     choice = input("******请输入菜单编号:")
     if choice == "":
         continue
-    elif choice.isdigit():
+    elif is_number(choice):
         choice = int(choice)
         if choice == 1:
             query_product()
