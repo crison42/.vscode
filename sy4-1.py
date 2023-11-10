@@ -27,7 +27,7 @@ def add_product():
     in_price = input("请输入进货价格:")
     sale_price = input("请输入销售价格:")
     stock = input("请输入进货数量:")
-    if in_price <= 0 or sale_price <= 0 or stock < 0:
+    if int(in_price) <= 0 or int(sale_price) <= 0 or int(stock) < 0:
         print("价格必须大于0,数量必须为非负数")
     elif in_price.isdigit() and sale_price.isdigit() and stock.isdigit():
         inventory[product] = {
