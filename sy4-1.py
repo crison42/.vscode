@@ -1,7 +1,7 @@
 # 商品库存
 inventory = {}
 
-# 总销售额/总进货额
+# 总销售额/总进货额(可变更全局变量)
 total_sale_price = 0
 total_in_price = 0
 
@@ -24,21 +24,22 @@ def query_product():
 def add_product():
     global total_in_price  # 全局变量标记
     product = input("请输入商品名称:")
-    in_price = int(input("请输入进货价格:"))
-    sale_price = int(input("请输入销售价格:"))
-    stock = int(input("请输入进货数量:"))
+    in_price = input("请输入进货价格:")
+    sale_price = input("请输入销售价格:")
+    stock = input("请输入进货数量:")
     if in_price <= 0 or sale_price <= 0 or stock < 0:
         print("价格必须大于0,数量必须为非负数")
-    elif str(in_price).isdigit() and str(sale_price).isdigit() and str(stock).isdigit():
+    elif in_price.isdigit() and sale_price.isdigit() and stock.isdigit():
         inventory[product] = {
-            "in_price": in_price,
-            "sale_price": sale_price,
-            "stock": stock,
+            "in_price": int(in_price),
+            "sale_price": int(sale_price),
+            "stock": int(stock),
         }
         if stock > 0:
             total_in_price += in_price * stock
     else:
         print("输入数值必须为数字")
+
 
 # 卖出商品
 def sell_product():
@@ -49,12 +50,12 @@ def sell_product():
     else:
         stock = inventory[product]["stock"]
         sale_num = int(input("请输入销售数量:"))
-        if str(sale_num).isdigit():
+        if str(sale_num).isdigit(): # 数字判定
             if stock >= sale_num:
                 price = int(inventory[product]["sale_price"] * sale_num)
                 print(f"应付款={price}")
                 pay = int(input("请输入付款金额:"))
-                if str(pay).isdigit():
+                if str(pay).isdigit():# 数字判定
                     if pay >= price:
                         inventory[product]["stock"] -= sale_num
                         print(f"找零={pay-price}")
@@ -68,6 +69,7 @@ def sell_product():
         else:
             print("输入数值必须为数字")
 
+
 # 汇总
 def summary():
     global total_sale_price, total_in_price  # 全局变量标记
@@ -78,7 +80,7 @@ def summary():
         print("商品名称        进货价格        销售价格        库存数量")
         for product, info in inventory.items():
             print(
-                f"{product.ljust(16)}{str(info['in_price']).ljust(16)}{str(info['sale_price']).ljust(16)}{str(info['stock']).ljust(16)}"
+                f"{product.ljust(14)}{str(info['in_price']).ljust(16)}{str(info['sale_price']).ljust(16)}{str(info['stock']).ljust(16)}"
             )
         print(f"总销售额:{total_sale_price}" + "\n" + f"总进货额:-{total_in_price}")
 
