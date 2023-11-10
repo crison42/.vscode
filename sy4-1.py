@@ -35,8 +35,8 @@ def add_product():
             "sale_price": int(sale_price),
             "stock": int(stock),
         }
-        if stock > 0:
-            total_in_price += in_price * stock
+        if int(stock) > 0:
+            total_in_price += int(in_price) * int(stock)
     else:
         print("输入数值必须为数字")
 
@@ -49,13 +49,15 @@ def sell_product():
         print("商品不存在")
     else:
         stock = inventory[product]["stock"]
-        sale_num = int(input("请输入销售数量:"))
-        if str(sale_num).isdigit(): # 数字判定
+        sale_num = input("请输入销售数量:")
+        if sale_num.isdigit():  # 数字判定
+            sale_num = int(sale_num)
             if stock >= sale_num:
                 price = int(inventory[product]["sale_price"] * sale_num)
                 print(f"应付款={price}")
-                pay = int(input("请输入付款金额:"))
-                if str(pay).isdigit():# 数字判定
+                pay = input("请输入付款金额:")
+                if pay.isdigit():  # 数字判定
+                    pay = int(pay)
                     if pay >= price:
                         inventory[product]["stock"] -= sale_num
                         print(f"找零={pay-price}")
@@ -90,17 +92,23 @@ print("***********欢迎进入超市管理系统************")
 for index, item in enumerate(menu, start=1):
     print(f"{item}")
 while True:
-    choice = int(input("******请输入菜单编号:"))
-    if choice == 1:
-        query_product()
-    elif choice == 2:
-        add_product()
-    elif choice == 3:
-        sell_product()
-    elif choice == 4:
-        summary()
-    elif choice == -1:
-        print("谢谢使用")
-        break
+    choice = input("******请输入菜单编号:")
+    if choice == "":
+        continue
+    elif choice.isdigit():
+        choice = int(choice)
+        if choice == 1:
+            query_product()
+        elif choice == 2:
+            add_product()
+        elif choice == 3:
+            sell_product()
+        elif choice == 4:
+            summary()
+        elif choice == -1:
+            print("谢谢使用")
+            break
+        else:
+            print("无效的操作序号，请重新输入")
     else:
         print("无效的操作序号，请重新输入")
