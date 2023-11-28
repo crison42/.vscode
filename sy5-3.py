@@ -18,7 +18,7 @@ evaluate = "一句话评价:"
 actor = "上映日期及主演："
 # 创建一个文件，如果文件已经存在，则清空文件内容
 with open("output.txt", "w") as f:
-   pass
+    f.truncate()
 with open("output.txt", "a") as f:
     for div in file:
         title = div.xpath("./td[1]/a/@title")[0]
