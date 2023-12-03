@@ -13,8 +13,8 @@ def solve_linear_equations(coefficients, constants):
     return x
 
 # 示例输入
-coefficients = [[1, 2, 3], [0, 4, 5], [0, 0, 6]]#对应x1,x2,x3系数
-constants = [6, 9, 12]#对应右侧系数
+coefficients = [[1, -2, 1], [0, 2, -8], [5, 0, -5]]#对应各方程系数
+constants = [0, 8, 10]#对应右侧系数
 
 # 求解线性方程组
 solution = solve_linear_equations(coefficients, constants)
