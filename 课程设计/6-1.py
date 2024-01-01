@@ -1,3 +1,7 @@
+import re
+import string
+
+
 def build_frequency_table(words):
     frequency_table = {}
     for word in words:
@@ -15,11 +19,17 @@ def sequential_search(frequency_table, target_word):
             return frequency, comparisons
     return 0, comparisons  # 如果单词不在表中，返回词频0和比较次数
 
-# 假设我们有一段文本
-text = "This is a simple example text with several words with different frequencies"
+# 读取文件并清理标点
+def read_and_clean_file(file_path):
+    with open(file_path, 'r') as file:
+        text = file.read()
+        # 使用正则表达式去除标点
+        text = re.sub(r'[{}]+'.format(string.punctuation), ' ', text)
+        # 分割单词并转换为小写
+        words = text.lower().split()
+    return words
 
-# 简单的预处理：转为小写并分割成单词列表
-words = text.lower().split()
+words = read_and_clean_file('input.txt')
 
 # 构建频率表
 frequency_table = build_frequency_table(words)

@@ -1,3 +1,6 @@
+import re
+import string
+
 class ListNode:
     def __init__(self, word, frequency):
         self.word = word
@@ -30,10 +33,18 @@ class LinkedList:
                 return current.frequency, comparisons
             current = current.next
         return 0, comparisons  # 如果单词不在链表中，返回词频0和比较次数
-    
-# 使用之前提供的文本和预处理方法
-text = "This is a simple example text with several words with different frequencies"
-words = text.lower().split()
+
+# 读取文件并清理标点
+def read_and_clean_file(file_path):
+    with open(file_path, 'r') as file:
+        text = file.read()
+        # 使用正则表达式去除标点
+        text = re.sub(r'[{}]+'.format(string.punctuation), ' ', text)
+        # 分割单词并转换为小写
+        words = text.lower().split()
+    return words
+
+words = read_and_clean_file('input.txt')
 
 # 构建链表
 linked_list = LinkedList()

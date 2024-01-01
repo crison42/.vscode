@@ -1,0 +1,2 @@
+Hello world. This is a simple example.
+This example is just a test.

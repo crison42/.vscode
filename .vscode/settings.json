@@ -3,5 +3,7 @@
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
     "python.formatting.provider": "none",
-    "Codegeex.Privacy": true
+    "Codegeex.Privacy": true,
+    "commentTranslate.multiLineMerge": true,
+    "commentTranslate.hover.enabled": false
 }
