@@ -31,7 +31,7 @@ class OpenAddressingHashTable:
             if index == start_index:
                 return None
         return None
-    # 新增计算ASL的方法
+    # 计算ASL的方法
     def calculate_asl(self):
         total_search_steps = 0
         total_elements = 0
@@ -40,7 +40,7 @@ class OpenAddressingHashTable:
             total_elements += 1
         return total_search_steps / total_elements if total_elements else 0
 
-    # 新增辅助方法，用于计算查找特定键所需的步数
+    # 辅助方法，用于计算查找特定键所需的步数
     def search_steps(self, key):
         index = self.hash(key)
         start_index = index

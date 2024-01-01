@@ -74,5 +74,5 @@ def calculate_bst_asl(bst):
     inorder_traverse(bst.root, 1, depths)
     return sum(depths) / len(depths) if depths else 0
 # 计算二叉搜索树平均查找长度
-avg_asl = calculate_bst_asl(bst)
-print(f"Average ASL for BST: {avg_asl}")
+asl = calculate_bst_asl(bst)
+print(f"Average ASL for BST: {asl}")
