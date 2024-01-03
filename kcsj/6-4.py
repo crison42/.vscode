@@ -55,9 +55,9 @@ bst = BinarySearchTree()
 for word in words:
     bst.insert(word)
 
-# 检索单词 'example' 的频率
-frequency = bst.search('example')
-print(f"Word 'example' occurs {frequency} times in the BST.")
+word_to_search = input("请输入要检索的单词: ")
+frequency = bst.search(word_to_search)
+print(f"单词 {word_to_search} 在文章中出现 {frequency} 次.")
 
 def calculate_bst_asl(bst):
     def inorder_traverse(node, current_depth, results):
@@ -75,4 +75,4 @@ def calculate_bst_asl(bst):
     return sum(depths) / len(depths) if depths else 0
 # 计算二叉搜索树平均查找长度
 asl = calculate_bst_asl(bst)
-print(f"Average ASL for BST: {asl}")
+print(f"平均查找长度 ASL= {asl}")

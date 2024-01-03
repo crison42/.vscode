@@ -34,11 +34,10 @@ words = read_and_clean_file('input.txt')
 # 构建频率表
 frequency_table = build_frequency_table(words)
 
-# 假设我们要查找单词 'with' 的词频
-word_to_search = 'with'
+word_to_search = input("请输入要检索的单词: ")
 frequency, comparisons = sequential_search(frequency_table, word_to_search)
 
-print(f"Word '{word_to_search}' found with frequency {frequency} after {comparisons} comparisons.")
+print(f"单词 '{word_to_search}' 在文章中出现 {frequency} 次.")
 
 def calculate_asl(search_function, data_structure, data):
     total_comparisons = 0
@@ -47,5 +46,5 @@ def calculate_asl(search_function, data_structure, data):
         total_comparisons += comparisons
     return total_comparisons / len(data)
 # 计算平均查找长度
-average_asl = calculate_asl(sequential_search, frequency_table, words)
-print(f"Average ASL: {average_asl}")
+asl = calculate_asl(sequential_search, frequency_table, words)
+print(f"平均查找长度 ASL= {asl}")

@@ -71,10 +71,10 @@ oahash = OpenAddressingHashTable(size=128)  # 假设我们设置哈希表大小�
 for word in words:
     oahash.insert(word)
 
-# 检索单词 'example' 的频率
-frequency = oahash.search('example')
-print(f"Word 'example' occurs {frequency} times in the Open Addressing Hash Table.")
+word_to_search = input("请输入要检索的单词: ")
+frequency = oahash.search(word_to_search)
+print(f"单词 {word_to_search} 在文章中出现 {frequency} 次.")
 
 asl= oahash.calculate_asl()
-print(f"Average number of probes: {asl}")
+print(f"平均查找长度 ASL= {asl}")
 

@@ -51,11 +51,10 @@ linked_list = LinkedList()
 for word in words:
     linked_list.insert(word)
 
-# 查找单词 'with' 的词频
-word_to_search = 'with'
+word_to_search = input("请输入要检索的单词: ")
 frequency, comparisons = linked_list.search(word_to_search)
 
-print(f"Word '{word_to_search}' found with frequency {frequency} after {comparisons} comparisons.")
+print(f"单词 '{word_to_search}' 在文章中出现 {frequency} 次.")
 
 def calculate_asl_linked_list(linked_list):
     total_comparisons = 0
@@ -73,4 +72,4 @@ def calculate_asl_linked_list(linked_list):
 
 # 计算链表的 ASL
 asl = calculate_asl_linked_list(linked_list)
-print(f"Average Search Length (ASL) for linked list sequential search: {asl}")
+print(f"平均查找长度 ASL= {asl}")

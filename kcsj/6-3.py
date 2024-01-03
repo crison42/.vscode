@@ -49,10 +49,10 @@ sorted_table = list(frequency_table.items())
 sorted_table.sort(key=lambda item: item[0])
 
 # 现在进行折半查找
-word_to_search = 'with'
+word_to_search = input("请输入要检索的单词: ")
 frequency, comparisons = binary_search(sorted_table, word_to_search)
 
-print(f"Word '{word_to_search}' found with frequency {frequency} after {comparisons} comparisons.")
+print(f"单词 '{word_to_search}' 在文章中出现 {frequency} 次.")
 
 def calculate_asl(search_function, data_structure, data):
     total_comparisons = 0
@@ -61,5 +61,5 @@ def calculate_asl(search_function, data_structure, data):
         total_comparisons += comparisons
     return total_comparisons / len(data)
 # 计算折半查找的平均ASL
-average_asl = calculate_asl(binary_search, sorted_table, words)
-print(f"Average ASL for binary search: {average_asl}")
+asl = calculate_asl(binary_search, sorted_table, words)
+print(f"平均查找长度 ASL= {asl}")

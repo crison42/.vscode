@@ -79,9 +79,9 @@ chaining_hash = ChainingHashTable(size=128)  # 假设我们设置哈希表大小
 for word in words:
     chaining_hash.insert(word)
 
-# 检索单词 'example' 的频率
-frequency = chaining_hash.search('example')
-print(f"Word 'example' occurs {frequency} times in the Chaining Hash Table.")
+word_to_search = input("请输入要检索的单词: ")
+frequency = chaining_hash.search(word_to_search)
+print(f"单词 {word_to_search} 在文章中出现 {frequency} 次.")
 
 asl = chaining_hash.calculate_asl()
-print(f"Average Search Length (ASL) for the Chaining Hash Table is: {asl}")
+print(f"平均查找长度 ASL= {asl}")
