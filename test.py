@@ -1,82 +1,107 @@
-from queue import Queue
+import numpy as np
+import matplotlib.pyplot as plt
+import heapq
+
+# 迷宫大小
+N = 24
+
+# 创建一个24x24的迷宫，障碍的概率是30%
+# maze = np.random.choice([0, 1], size=(N, N), p=[0.3, 0.7])
+maze = [
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+]
+
+# 确保起点和终点是开放的
+maze[0][0] = 1
+maze[N - 1][N - 1] = 1
+
+# 可视化迷宫
+plt.imshow(maze, cmap="binary")
+plt.show()
 
 
-class Puzzle:
-    def __init__(self, state):
-        self.state = state
-        self.empty = state.index(" ")
-        self.target = "12345678 "
-        self.directions = [-3, 3, -1, 1]  # 上下左右
-
-    def is_solvable(self):
-        inv_count = 0
-        for i in range(len(self.state)):
-            for j in range(i + 1, len(self.state)):
-                if (
-                    self.state[i] != " "
-                    and self.state[j] != " "
-                    and self.state[i] > self.state[j]
-                ):
-                    inv_count += 1
-        return inv_count % 2 == 0
-
-    def is_solved(self):
-        return self.state == self.target
-
-    def move_empty(self, direction):
-        new_empty = self.empty + direction
-        if new_empty < 0 or new_empty >= len(self.state):
-            return None
-        if direction == -1 and self.empty % 3 == 0:
-            return None
-        if direction == 1 and new_empty % 3 == 0:
-            return None
-        new_state = list(self.state)
-        new_state[self.empty], new_state[new_empty] = (
-            new_state[new_empty],
-            new_state[self.empty],
-        )
-        return Puzzle("".join(new_state))
-
-    def print_puzzle(self):
-        for i in range(0, 9, 3):
-            print(self.state[i : i + 3].replace("", " | ")[2:-2])
-            if i < 6:
-                print("---------")
-        print("__________________________________")
+# A*算法的辅助函数
+def heuristic(a, b):
+    return np.sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2)
 
 
-def solve_puzzle(initial_state):
-    if not initial_state.is_solvable():
-        return None
-    visited = set()
-    q = Queue()
-    q.put((initial_state, []))
-
-    while not q.empty():
-        current_puzzle, path = q.get()
-        if current_puzzle.is_solved():
-            return path
-
-        visited.add(current_puzzle.state)
-        for direction in current_puzzle.directions:
-            next_puzzle = current_puzzle.move_empty(direction)
-            if next_puzzle and next_puzzle.state not in visited:
-                q.put((next_puzzle, path + [next_puzzle]))
-
-    return None
+def get_neighbors(node):
+    directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]  # 4个方向移动
+    result = []
+    for direction in directions:
+        neighbor = (node[0] + direction[0], node[1] + direction[1])
+        if 0 <= neighbor[0] < N and 0 <= neighbor[1] < N:  # 检查邻居是否在迷宫内
+            result.append(neighbor)
+    return result
 
 
-# 示例初始状态
-initial = Puzzle("2831467 5")
+# A*算法实现
+def astar(maze, start, goal):
+    # open_set 保存待评估节点，初始只有起点
+    open_set = []
+    heapq.heappush(open_set, (0, start))
+    came_from = {}  # 保存每个节点的父节点
+    g_score = {start: 0}  # 从起点到当前节点的距离
+    f_score = {start: heuristic(start, goal)}  # f(n)=g(n)+h(n)的值
 
-# 检查是否可解并求解
-if initial.is_solvable():
-    solution_path = solve_puzzle(initial)
-    if solution_path:
-        for step in solution_path:
-            step.print_puzzle()
-    else:
-        print("没有找到解决方案")
-else:
-    print("这个九宫格问题无解")
+    while open_set:
+        current = heapq.heappop(open_set)[1]  # 当前评估节点
+
+        if current == goal:
+            # 回溯找路径
+            path = []
+            while current in came_from:
+                path.append(current)
+                current = came_from[current]
+            return path[::-1]  # 反转路径
+
+        for neighbor in get_neighbors(current):
+            if maze[neighbor] == 0:  # 检查邻居是否可通行
+                continue
+
+            tentative_g_score = g_score[current] + 1
+            if neighbor not in g_score or tentative_g_score < g_score[neighbor]:
+                # 更新路径
+                came_from[neighbor] = current
+                g_score[neighbor] = tentative_g_score
+                f_score[neighbor] = tentative_g_score + heuristic(neighbor, goal)
+                heapq.heappush(open_set, (f_score[neighbor], neighbor))
+
+    return False  # 如果没有路径返回False
+
+
+# 设置起点和终点
+start = (0, 0)
+goal = (N - 1, N - 1)
+
+# 使用A*算法寻找路径
+path = astar(maze, start, goal)
+
+# 可视化路径
+for node in path:
+    maze[node] = 2
+plt.imshow(maze, cmap="binary")
+plt.show()
