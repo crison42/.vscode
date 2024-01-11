@@ -20,5 +20,3 @@ elif str=="6":
     imported_module=__import__("6-6")
 else:
     print("输入错误")
-
-imported_module.main()
