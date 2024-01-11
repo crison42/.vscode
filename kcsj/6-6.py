@@ -75,7 +75,7 @@ def read_and_clean_file(file_path):
 
 words = read_and_clean_file('input.txt')
 # 创建链地址法哈希表并插入单词
-chaining_hash = ChainingHashTable(size=128)  # 假设我们设置哈希表大小为128
+chaining_hash = ChainingHashTable(size=128)  # 假设设置哈希表大小为128
 for word in words:
     chaining_hash.insert(word)
 

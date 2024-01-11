@@ -67,7 +67,7 @@ def read_and_clean_file(file_path):
 file_path = 'input.txt' 
 words = read_and_clean_file(file_path)
 # 创建开放地址法哈希表并插入单词
-oahash = OpenAddressingHashTable(size=128)  # 假设我们设置哈希表大小为128
+oahash = OpenAddressingHashTable(size=128)  # 假设设置哈希表大小为128
 for word in words:
     oahash.insert(word)
 
