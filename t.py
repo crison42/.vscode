@@ -1,5 +1,6 @@
 import turtle
 import random
+import matplotlib.font_manager as fm
 
 
 def draw_fu(text, font, color, bg_color):
@@ -20,11 +21,14 @@ def generate_random_color():
     color_code = "#{:02x}{:02x}{:02x}".format(r, g, b)
     return color_code
 
+def generate_random_font():
+    available_fonts = fm.findSystemFonts()
+    random_font = random.choice(available_fonts)
+    return random_font
 
 def generate_random_fu():
-    font_list = ["Arial", "Times New Roman", "Courier", "Verdana"]
 
-    random_font = random.choice(font_list)
+    random_font = generate_random_font()
     random_color = generate_random_color()
     random_bg_color = generate_random_color()
 
