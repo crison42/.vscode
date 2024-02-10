@@ -10,3 +10,15 @@ def generate_random_color():
 # 生成随机颜色代码并打印
 random_color = generate_random_color()
 print(random_color)
+
+import random
+import matplotlib.font_manager as fm
+
+def generate_random_font():
+    available_fonts = fm.findSystemFonts()
+    random_font = random.choice(available_fonts)
+    return random_font
+
+# 生成随机字体并打印
+random_font = generate_random_font()
+print(random_font)
