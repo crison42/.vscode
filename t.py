@@ -21,16 +21,18 @@ def generate_random_color():
     color_code = "#{:02x}{:02x}{:02x}".format(r, g, b)
     return color_code
 
+
 def generate_random_font():
     available_fonts = fm.findSystemFonts()
     random_font = random.choice(available_fonts)
     return random_font
 
+
 def generate_random_fu():
 
     random_font = generate_random_font()
-    random_color = generate_random_color()
-    random_bg_color = generate_random_color()
+    random_color = "#b6ccfb"
+    random_bg_color = "#d6b6fb"
 
     draw_fu("福", random_font, random_color, random_bg_color)
 
