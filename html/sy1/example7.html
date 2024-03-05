@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("li:even").css("background-color", "pink");
+            $("li:odd").css("background-color", "yellow");
+            $("li:gt(3):not(:last)").css("background-color", "red");
+            $("li:contain('6'),li:contain('3')").css("background-color", "blue");
+        })
+    </script>
+</head>
+
+<body>
+    <h6>2213 常洪</h6>
+    <ul>
+        <li>我是第1个li</li>
+        <li>我是第2个li</li>
+        <li>我是第3个li</li>
+        <li>我是第4个li</li>
+        <li>我是第5个li</li>
+        <li>我是第6个li</li>
+        <li>我是第7个li</li>
+        <li>我是第8个li</li>
+        <li>我是第9个li</li>
+        <li>我是第10个li</li>
+    </ul>
+    <input type="checkbox" checked><input type="checkbox">
+    <input type="checkbox" checked><input type="checkbox">
+    <input type="checkbox"><input type="checkbox">
+    <input type="checkbox" checked><input type="checkbox">
+</body>
+
+</html>

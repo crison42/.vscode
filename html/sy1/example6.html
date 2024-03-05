@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DOM对象与jQuery对象的区别</title>
+<style>
+	h3{
+		width: 600px;
+		text-align: center;
+	}
+	p{
+		width:600px;
+		margin-bottom: 20px;
+		background-color: #ddd;
+		overflow: hidden;
+	}
+	p>span{
+		float:right;
+	}
+</style>
+<script src="jquery-3.7.1.js" type="text/javascript"></script>
+<script>
+	$(function(){
+	    // 利用DOM对象
+        // document.getElementById("cr").onclick = function(){
+        //     if(this.checked)
+        //     alert("谢谢你参与！")
+        // }
+        // 利用jQuery对象
+        // $("#cr").click(function(){
+        //     if($(this).is(":checked"))
+        //     alert("谢谢你参与！")
+        // });
+        // 利用jQuery对象和DOM对象混合
+        $("#cr").click(function(){
+            // if($(this)[0].is(":checked"))
+            // alert("谢谢你参与！");
+            if(this.checked)
+            alert("谢谢你参与！")
+        });
+	});
+</script>
+</head>
+<body>
+    <h6>2213 常洪</h6>
+	<h3>软件学院实验室管理要求</h3>
+	<p>
+	实验室教学计算机房是从事教学活动的重要场所，使用者必须遵守以下规定： <br>
+	1．严禁任何人利用计算机观看、传播、拷贝、制作淫秽、反动、迷信等不健康内容的文件。如有违反，一经发现，一校规校纪处理，清洁严重者移交有关部门依法处理； <br>
+    2．科学、安全的使用移动存储介质，严防计算机病毒进入机器； <br>
+    3．上机者必须严格执行上网有关规定，遵守各级公安部门、我校网管部门发布的有关管理规定； <br>
+    4．严禁在计算机上玩游戏。对违反规定者，视情节轻重分别予以劝离、通报批评等措施处置。 <br>
+    5．上机者必须遵守安全操作程序，不准破坏性操作，不准设置口令和修改机内配置参数，不准删除系统文件，发现异常情况，及时向机房管理人员报告。 <br>
+	6．上机者必须爱护机房设备，不得私自拆卸、搬移设备或私自出借机房物品。因工作需要借用，须按规定办理有关手续。 <br>
+	7．上机者必须严格遵守机房的规章制度，保持机房环境整洁，不得在机房内喧哗、 打闹和吸烟，不准在机房内吃东西、乱扔杂物、随地吐痰，违反者视情节轻重按章处理。 <br>
+	本办法自公布之日起施行，由软件学院实验室负责解释。 <br>
+	<span>软件学院实验室&nbsp;&nbsp;&nbsp;&nbsp;二零二三年十月</span>
+	</p>
+	<input type="checkbox" id="cr">
+	<label for="cr">软工XXX班XXX已经阅读了上面的实验室规章要求！</label>	
+</body>
+</html>

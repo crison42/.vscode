@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/example3.css">
+</head>
+
+<body>
+    <h6>2213 常洪</h6>
+    <h1><img src="images/logo.jpg">系列产品</h1>
+    <div id="box"></div>
+    <script>
+        var imgArr = [{ imgsrc: "images/image1.jpg", name: "娃哈哈矿泉水" },
+        { imgsrc: "images/image2.jpg", name: "娃哈哈AD钙奶" },
+        { imgsrc: "images/image3.jpg", name: "娃哈哈营养快线" },
+        { imgsrc: "images/image4.jpg", name: "娃哈哈乳酸菌饮品" },
+        { imgsrc: "images/image5.jpg", name: "娃哈哈爽歪歪" },
+        { imgsrc: "images/image6.jpg", name: "娃哈哈奶奶" },
+        { imgsrc: "images/image7.jpg", name: "娃哈哈冰红茶" },
+        { imgsrc: "images/image8.jpg", name: "娃哈哈格瓦斯" }];
+        var tabstr = "<table><tr><th>序号</th><th>图片</th><th>名称</th></tr>";
+        for (var i=0;i<imgArr.length;i++) {
+           tabstr+="<tr><td>"+(i+1)+"</td><td><img src="+imgArr[i].imgsrc+"></td><td>"+imgArr[i].name+"</td></tr>"
+        }
+        tabstr+="</table>"
+        document.getElementById("box").innerHTML=tabstr;
+    </script>
+</body>
+
+</html>
