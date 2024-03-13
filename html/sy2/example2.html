@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+            width: 160px;
+        }
+
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #fff;
+        }
+
+        li>span {
+            display: block;
+            background-color: pink;
+        }
+
+        li>div {
+            height: 120px;
+            background-color: yellow;
+            display: none;
+        }
+    </style>
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            $("span").click(function () {
+                if ($(this).next().is(":hidden")) {
+                    $(this).next().slideDown()
+                        .parent().siblings().children("div").slideUp();
+                } else {
+                    $(this).next().slideUp();
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <h1 align="center">软工2213班常洪</h1>
+    <ul>
+        <li>
+            <span>标题1</span>
+            <div>我是弹出来的div1</div>
+        </li>
+        <li>
+            <span>标题2</span>
+            <div>我是弹出来的div2</div>
+        </li>
+        <li>
+            <span>标题3</span>
+            <div>我是弹出来的div3</div>
+        </li>
+        <li>
+            <span>标题4</span>
+            <div>我是弹出来的div4</div>
+        </li>
+    </ul>
+</body>
+
+</html>

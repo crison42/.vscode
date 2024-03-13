@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	ul,li{
+		padding:0;
+		margin: 0;
+		list-style:none;
+		text-align: center;
+	}
+	#wrap{
+		width:330px;
+		margin:30px auto 0;
+		height: 30px;
+		background-color: blue;
+		border-radius: 5px;
+		padding:0 5px;
+	}
+	#wrap>ul{
+		height: 30px;
+	}
+	#wrap>ul>li{
+		float: left;
+		width: 100px;
+		background-color:yellow;
+		height: 30px;
+		line-height: 30px;
+		margin: 0 5px; 
+	}
+	a{
+		text-decoration: none;
+		color:red;
+	}	
+    #wrap .uu{
+    	background-color: pink;
+    	display: none;
+    }
+    </style>
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            $("#wrap>ul>li").mouseenter(function () {
+                $(this).children("ul").show();
+            })
+            $("#wrap>ul>li").mouseleave(function () {
+                $(this).children("ul").hide();
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <h1 align="center">软工2213班常洪</h1>
+    <div id="wrap">
+        <ul>
+            <li>
+                <a href="javascript:;">一级菜单1</a>
+                <ul class="uu">
+                    <li>二级菜单11</li>
+                    <li>二级菜单12</li>
+                    <li>二级菜单13</li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">一级菜单2</a>
+                <ul class="uu">
+                    <li>二级菜单21</li>
+                    <li>二级菜单22</li>
+                    <li>二级菜单23</li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">一级菜单3</a>
+                <ul class="uu">
+                    <li>二级菜单31</li>
+                    <li>二级菜单32</li>
+                    <li>二级菜单33</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
