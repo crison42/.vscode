@@ -11,7 +11,6 @@ def generate_random_color():
 random_color = generate_random_color()
 print(random_color)
 
-import random
 import matplotlib.font_manager as fm
 
 def generate_random_font():
