@@ -32,3 +32,6 @@ plt.legend()
 
 # 显示图形
 plt.show()
+
+k=input()
+print(k*a+b)
