@@ -69,7 +69,7 @@
                     </div>
                 </td>
                 <td>
-                    <a href="javascript:;" @click="remove(item.id, item.status)">删除</a>
+                    <a href="javascript:;" @click="remove(index, item.status)">删除</a>
                 </td>
             </tr>
         </tbody>
