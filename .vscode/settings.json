@@ -6,5 +6,6 @@
     "Codegeex.Privacy": true,
     "commentTranslate.multiLineMerge": true,
     "commentTranslate.hover.enabled": false,
-    "commentTranslate.targetLanguage": "zh-CN"
+    "commentTranslate.targetLanguage": "zh-CN",
+    "commentTranslate.source": "Bing"
 }
