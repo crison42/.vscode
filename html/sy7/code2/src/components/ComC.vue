@@ -2,6 +2,7 @@
     <h1>我是组件ComC</h1>
     <div class="box">
         <p>我是组件ComC里面的段落</p>
+        <my-com-a></my-com-a>
     </div>
 </template>
 

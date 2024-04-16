@@ -4,9 +4,12 @@
   <my-com-a></my-com-a>
   <hr>
   <my-com-b></my-com-b>
+  <hr>
+  <my-com-c></my-com-c>
 </template>
 
 <script setup>
+import MyComC from './components/ComC.vue'
 </script>
 
 <style scoped>
