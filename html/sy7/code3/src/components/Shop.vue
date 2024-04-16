@@ -93,8 +93,8 @@ const all = () => {
 //下面复选框控制“全选/全不选” 复选框
 const each = () => {
     if ($("[name='list']:checked").length == $("[name='list']").length)
-        $("#checkBoxAll").prop("checked", true);
-    else $("#checkBoxAll").prop("checked", false);
+        $("#checkBoxAll").prop("checked", false);
+    else $("#checkBoxAll").prop("checked", true);
     total()
 }
 </script>
