@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import MyShop from './components/Shop.vue'
+import MyShop from './components/exshop.vue'
 </script>
