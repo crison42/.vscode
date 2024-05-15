@@ -1,0 +1,24 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build",
+			"path": "html/sy11/code1",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build - html/sy11/code1",
+			"detail": "vite build"
+		},
+		{
+			"type": "npm",
+			"script": "install",
+			"path": "html/sy11/code1",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: install - html/sy11/code1",
+			"detail": "install dependencies from package"
+		},
+		
+	]
+}
