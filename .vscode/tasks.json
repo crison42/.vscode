@@ -19,6 +19,13 @@
 			"label": "npm: install - html/sy11/code1",
 			"detail": "install dependencies from package"
 		},
-		
+		{
+			"type": "npm",
+			"script": "dev",
+			"path": "html/sy11/code1",
+			"problemMatcher": [],
+			"label": "npm: dev - html/sy11/code1",
+			"detail": "vite"
+		}
 	]
 }
