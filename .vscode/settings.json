@@ -7,5 +7,6 @@
     "commentTranslate.multiLineMerge": true,
     "commentTranslate.hover.enabled": false,
     "commentTranslate.targetLanguage": "zh-CN",
-    "commentTranslate.source": "Bing"
+    "commentTranslate.source": "Bing",
+    "python.analysis.typeCheckingMode": "basic"
 }
